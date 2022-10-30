@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "react-router-dom";
 import PostItem from "./PostItem";
 
 class PostList extends React.Component {
@@ -9,11 +8,13 @@ class PostList extends React.Component {
             <PostItem key={post.id}
                 id={post.id}
                 text={post.text}
+                filename={post.filename}
                 created={post.created}
-                deletePost={this.props.deletePost} />)
+                deletePost={this.props.deletePost}
+                setIsEditPost={this.props.setIsEditPost} />)
         return (
-            <div>
-                <Link to={'/posts/newpost'} ><i className="medium material-icons black-text">add_circle</i></Link>
+            <div>           
+                    <img alt="" src="./image.png"/>                    
                 {postItems}
             </div >
         );

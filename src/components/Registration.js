@@ -1,6 +1,6 @@
 import React from "react";
 import './Registration.css';
-import { fetch } from './Api';
+//import { API_URL, fetch } from './Api';
 
 class Registration extends React.Component {
     constructor(props) {
@@ -21,7 +21,7 @@ class Registration extends React.Component {
     }
 
     async Registration() {
-        fetch('http://localhost:8080/users/signup', {
+      /*   fetch(API_URL + '/users/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -37,7 +37,7 @@ class Registration extends React.Component {
             })
         })
             .then(() => this.setState({ success: true }))
-            .catch(error => { this.setState({ errors: error.body.violations }) });
+            .catch(error => { this.setState({ errors: error.body.violations }) }); */
     }
 
     handleSubmit(event) {

@@ -14,7 +14,8 @@ class Login extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    async handleSubmit(event) {
+
+    handleSubmit(event) {
         const setIsAuth = this.props.authProps.setIsAuth;
         event.preventDefault();
         login(this.state.username, this.state.password)
@@ -23,7 +24,7 @@ class Login extends React.Component {
             })
             .catch(error => {
                 setIsAuth(false);
-                this.setState({ error: error.body.message });
+                this.setState({ error: error.response.data.message });
             })
     }
 
@@ -31,6 +32,7 @@ class Login extends React.Component {
         return (
             <div className="row">
                 <div className="col l4 offset-l4 s12">
+                    <div>{process.env.REACT_APP_NOT_SECRET_CODE}</div>
                     <h3>Please Log In {this.props.testProp}</h3>
                     <div className="red-text">{this.state.error}</div>
                     <form onSubmit={this.handleSubmit}>

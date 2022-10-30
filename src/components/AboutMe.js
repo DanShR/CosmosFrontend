@@ -1,5 +1,5 @@
 import React from "react";
-import { fetch } from "./Api"
+import { loadAboutMe } from "./Api";
 
 class AboutMe extends React.Component {
     constructor(props) {
@@ -12,25 +12,16 @@ class AboutMe extends React.Component {
         }
     }
 
-    async loadAboutMe() {
-
-        fetch('http://localhost:8080/users/me', {
-            method: 'GET',
-            credentials: "include"
-        })
-            .then(({ body }) => {
-                this.setState({
-                    id: body.id,
-                    username: body.username,
-                    email: body.email,
-                    roles: body.appUserRoles
-                })
-            })
-            .catch(error => { console.log(error) })
-    }
-
     componentDidMount() {
-        this.loadAboutMe();
+        loadAboutMe()
+            .then((data) => {
+                this.setState({
+                    id: data.id,
+                    username: data.username,
+                    email: data.email,
+                    roles: data.appUserRoles
+                })
+            })        
     }
 
     render() {

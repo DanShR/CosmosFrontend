@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams } from 'react-router-dom';
+//import { API_URL } from "./Api";
 
 export function withRouter(Children) {
     return (props) => {
@@ -25,7 +26,7 @@ class PasswordReset extends React.Component {
 
     componentDidMount() {
         const token = this.props.match.params.token;
-        fetch('http://localhost:8080/users/passwordreset/' + token, {
+       /*  fetch(API_URL + '/users/passwordreset/' + token, {
             method: 'GET'
         })
             .then((responce) => {
@@ -36,13 +37,13 @@ class PasswordReset extends React.Component {
                         .then((body) => this.setState({ done: false }));
                 }
             })
-            .catch(error => { console.log(error) })
+            .catch(error => { console.log(error) }) */
     }
 
     changePassword(e) {
         e.preventDefault();
         const token = this.props.match.params.token;
-        fetch('http://localhost:8080/users/changepassword', {
+       /*  fetch(API_URL + '/users/changepassword', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -61,7 +62,7 @@ class PasswordReset extends React.Component {
                         .then((body) => this.setState({ done: false, error: body.message }));
                 }
             })
-            .catch(error => { console.log(error) })
+            .catch(error => { console.log(error) }) */
     }
 
     render() {

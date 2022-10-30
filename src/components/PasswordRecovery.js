@@ -1,4 +1,5 @@
 import React from "react";
+//import { API_URL } from "./Api";
 
 class PasswordRecovery extends React.Component {
     constructor(props) {
@@ -16,7 +17,7 @@ class PasswordRecovery extends React.Component {
     }
 
     recoverByUsername(e) {
-        fetch('http://localhost:8080/users/passwordrecovery/username?username=' + this.state.username, {
+        /* fetch(API_URL + '/users/passwordrecovery/username?username=' + this.state.username, {
             method: 'GET'
         })
             .then((responce) => {
@@ -35,11 +36,11 @@ class PasswordRecovery extends React.Component {
 
                 }
             })
-            .catch(error => { console.log(error) })
+            .catch(error => { console.log(error) }) */
     }
 
     recoverByEmail(e) {
-        fetch('http://localhost:8080/users/passwordrecovery/email?email=' + this.state.email, {
+       /*  fetch(API_URL + '/users/passwordrecovery/email?email=' + this.state.email, {
             method: 'GET'
         })
             .then((responce) => {
@@ -50,7 +51,7 @@ class PasswordRecovery extends React.Component {
                         .then((body) => this.setState({ done: false, error: body.message }));
                 }
             })
-            .catch(error => { console.log(error) })
+            .catch(error => { console.log(error) }) */
     }
 
     render() {
