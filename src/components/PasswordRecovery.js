@@ -1,5 +1,5 @@
 import React from "react";
-//import { API_URL } from "./Api";
+import { passwordrecoveryByUsername, passwordrecoveryByEmail } from "./Api";
 
 class PasswordRecovery extends React.Component {
     constructor(props) {
@@ -17,41 +17,15 @@ class PasswordRecovery extends React.Component {
     }
 
     recoverByUsername(e) {
-        /* fetch(API_URL + '/users/passwordrecovery/username?username=' + this.state.username, {
-            method: 'GET'
-        })
-            .then((responce) => {
-                if (responce.ok) {
-                    this.setState({
-                        done: true,
-                        message: ''
-                    })
-                } else {
-                    responce.json().then((body) => {
-                        this.setState({
-                            done: false,
-                            error: body.message
-                        })
-                    });
-
-                }
-            })
-            .catch(error => { console.log(error) }) */
+        passwordrecoveryByUsername(this.state.username)
+            .then(() =>
+                this.setState({ done: true }));
     }
 
     recoverByEmail(e) {
-       /*  fetch(API_URL + '/users/passwordrecovery/email?email=' + this.state.email, {
-            method: 'GET'
-        })
-            .then((responce) => {
-                if (responce.ok) {
-                    this.setState({ done: true, message: '' })
-                } else {
-                    responce.json()
-                        .then((body) => this.setState({ done: false, error: body.message }));
-                }
-            })
-            .catch(error => { console.log(error) }) */
+        passwordrecoveryByEmail(this.state.email)
+            .then(() =>
+                this.setState({ done: true }));
     }
 
     render() {
@@ -96,7 +70,7 @@ class PasswordRecovery extends React.Component {
             <div className="row">
                 <div className="col l4 offset-l4 s12">
                     {content}
-                    <button className="btn form-button darken-4" onClick={e => window.location.href="/"} >Main page</button>
+                    <button className="btn form-button darken-4" onClick={e => window.location.href = "/"} >Main page</button>
                 </div>
             </div>
         )

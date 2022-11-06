@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from 'react-router-dom';
-//import { API_URL } from "./Api";
+import { passwordreset, changePassword } from "./Api";
 
 export function withRouter(Children) {
     return (props) => {
@@ -26,43 +26,23 @@ class PasswordReset extends React.Component {
 
     componentDidMount() {
         const token = this.props.match.params.token;
-       /*  fetch(API_URL + '/users/passwordreset/' + token, {
-            method: 'GET'
-        })
-            .then((responce) => {
-                if (responce.ok) {
-                    this.setState({ tokenValid: true })
-                } else {
-                    responce.json()
-                        .then((body) => this.setState({ done: false }));
-                }
-            })
-            .catch(error => { console.log(error) }) */
+        passwordreset(token)
+            .then(() =>
+                this.setState({ tokenValid: true }));
+
     }
 
     changePassword(e) {
         e.preventDefault();
         const token = this.props.match.params.token;
-       /*  fetch(API_URL + '/users/changepassword', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                'token': token,
-                'password': this.state.password,
-                'passwordConfirm': this.state.passwordConfirm
-            })
-        })
-            .then((responce) => {
-                if (responce.ok) {
-                    this.setState({ done: true })
-                } else {
-                    responce.json()
-                        .then((body) => this.setState({ done: false, error: body.message }));
-                }
-            })
-            .catch(error => { console.log(error) }) */
+        const data = {
+            token: token,
+            password: this.state.password,
+            passwordConfirm: this.state.passwordConfirm,
+        };
+        changePassword(data)
+            .then(() =>
+                this.setState({ done: true }));
     }
 
     render() {
@@ -73,7 +53,7 @@ class PasswordReset extends React.Component {
             content =
                 <div>
                     <h3>Password changed successfully</h3>
-                    <button className="btn form-button darken-4" onClick={e => window.location.href="/"} >Main page</button>
+                    <button className="btn form-button darken-4" onClick={e => window.location.href = "/"} >Main page</button>
                 </div>
         }
         else if (!tokenValid) {

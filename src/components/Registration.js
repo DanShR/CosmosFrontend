@@ -1,6 +1,6 @@
 import React from "react";
 import './Registration.css';
-//import { API_URL, fetch } from './Api';
+import { registration } from './Api';
 
 class Registration extends React.Component {
     constructor(props) {
@@ -21,23 +21,36 @@ class Registration extends React.Component {
     }
 
     async Registration() {
-      /*   fetch(API_URL + '/users/signup', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                'username': this.state.username,
-                'email': this.state.email,
-                'password': this.state.password,
-                'passwordConfirm': this.state.passwordConfirm,
-                "firstName": this.state.firstName,
-                "lastName": this.state.lastName,
-                "birthDate": this.state.birthDate
-            })
-        })
-            .then(() => this.setState({ success: true }))
-            .catch(error => { this.setState({ errors: error.body.violations }) }); */
+        const data = {
+            username: this.state.username,
+            email: this.state.email,
+            password: this.state.password,
+            passwordConfirm: this.state.passwordConfirm,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            birthDate: this.state.birthDate
+        };
+
+        registration(data)
+            .then((newPost) =>
+                this.setState({ success: true }));
+        /*   fetch(API_URL + '/users/signup', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                  'username': this.state.username,
+                  'email': this.state.email,
+                  'password': this.state.password,
+                  'passwordConfirm': this.state.passwordConfirm,
+                  "firstName": this.state.firstName,
+                  "lastName": this.state.lastName,
+                  "birthDate": this.state.birthDate
+              })
+          })
+              .then(() => this.setState({ success: true }))
+              .catch(error => { this.setState({ errors: error.body.violations }) }); */
     }
 
     handleSubmit(event) {
@@ -45,7 +58,7 @@ class Registration extends React.Component {
         this.Registration();
     }
 
-    render() {     
+    render() {
         if (this.state.success) {
             return (
                 <div className="row">

@@ -9,6 +9,7 @@ import Registration from "./components/Registration";
 import PasswordRecovery from "./components/PasswordRecovery";
 import AboutMe from './components/AboutMe'
 import PasswordReset from "./components/PasswordReset";
+import ConfirmEmail from "./components/ConfirmEmail";
 import './App.css'
 import Posts from "./components/Posts";
 
@@ -49,6 +50,7 @@ class App extends React.Component {
             <Route path="/passwordreset/:token" element={<PasswordReset />} />
             <Route path="/registration" element={<Registration authProps={authProps} />} />
             <Route path="/passwordrecovery" element={<PasswordRecovery />} />
+            <Route path="/confirmemail" element={<ConfirmEmail />} />
             <Route path="*" element={<Login authProps={authProps} />} />
           </Routes>
         </BrowserRouter>

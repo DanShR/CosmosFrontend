@@ -99,6 +99,36 @@ const logout = async () => {
   clearToken();
 }
 
+const registration = async (postData) => {
+  const res = await instance.post('/users/signup', postData);
+  return res.data;
+}
+
+const passwordrecoveryByUsername = async (username) => {
+  const res = await instance.get('/users/passwordrecovery/username?username=' + username);
+  return res.data;
+}
+
+const passwordrecoveryByEmail = async (email) => {
+  const res = await instance.get('/users/passwordrecovery/email?email=' + email);
+  return res.data;
+}
+
+const confirmEmail = async (token) => {
+  const res = await instance.get('/users/confirmemail?token=' + token);
+  return res;
+}
+
+const passwordreset = async (token) => {
+  const res = await instance.get('/users/passwordreset/' + token);
+  return res;
+}
+
+const changePassword = async (postData) => {
+  const res = await instance.post('/users/changepassword', postData);
+  return res.data;
+}
+
 export {
   login,
   loadUserPosts,
@@ -106,5 +136,11 @@ export {
   deletePost,
   updatePost,
   loadAboutMe,
-  logout
+  logout,
+  registration,
+  passwordrecoveryByUsername,
+  passwordrecoveryByEmail,
+  confirmEmail,
+  passwordreset,
+  changePassword
 }
